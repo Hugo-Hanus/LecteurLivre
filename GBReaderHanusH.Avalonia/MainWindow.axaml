@@ -2,8 +2,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="GBReaderHanusH.Avalonia.MainWindow"
-        Title="GBReaderHanusH.Avalonia">
-    Welcome to Avalonia!
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+        x:Class="GBReaderHanusH.Avalonia.MainWindow">
+        <TabControl>
+                <TabItem Header="Accueil">
+                        <StackPanel>
+                                <StackPanel IsVisible="True">
+                        <Grid ColumnDefinitions="300,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Recherche" />
+                                <TextBox Grid.Row="1" Grid.Column="0" Watermark="Recherche"/>
+                                <Button Grid.Row="1" Grid.Column="1">Recherche</Button>
+                        </Grid>
+                                <Grid ColumnDefinitions="350,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
+                                <ListBox Grid.Row="0" Grid.Column="0" Height="350" Width="400" HorizontalAlignment="Left" Name="Library" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                </ListBox>
+                                        <StackPanel Grid.Row="0" Grid.Column="2">
+                                                <TextBlock>Résumé :</TextBlock>
+                                                <TextBlock TextWrapping="Wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et sapien vitae ante tincidunt porttitor. Aliquam auctor, mauris et placerat pretium, augue odio dictum dui, ac dignissim ante ante et elit. Fusce non dui lectus. Donec a purus eu neque varius rhoncus. Donec viverra ipsum ac dignissim tincidunt. Quisque quis purus congue, rutrum orci eu, rhoncus augue. Aliquam condimentum erat nulla, quis aliquam lacus tincidunt at. Interdum et malesuada fames ac ante ipsum primis in faucibus.</TextBlock>
+                                                <Button>Commencer ou reprendre la lecture</Button>
+                                        </StackPanel>
+                                        
+                                </Grid>
+                        </StackPanel>
+                                <StackPanel  Name="NoBook" IsVisible="true">
+                                        <TextBlock TextAlignment="Left">Message: </TextBlock>
+                                        <TextBlock Name="Message" TextAlignment="Left"></TextBlock>
+                                </StackPanel>
+                        </StackPanel>
+                </TabItem>
+                <TabItem Header="Deux">
+                      
+                </TabItem>
+                <TabItem Header="Trois">
+                </TabItem>
+        </TabControl>
 </Window>

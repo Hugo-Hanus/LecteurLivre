@@ -1,6 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Avalonia", "GBReaderHanusH.Avalonia\GBReaderHanusH.Avalonia.csproj", "{388D846F-D725-4C11-8CE8-A906C36AD5BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C27E4707-07B8-43B4-867B-7C267FF2995D} = {C27E4707-07B8-43B4-867B-7C267FF2995D}
+		{7A5603D3-6FE7-4990-AA88-35551D6035DE} = {7A5603D3-6FE7-4990-AA88-35551D6035DE}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Test", "GBReaderHanusH.Test\GBReaderHanusH.Test.csproj", "{BFDC5087-4CE4-4042-8EA4-B7817729707E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7A5603D3-6FE7-4990-AA88-35551D6035DE} = {7A5603D3-6FE7-4990-AA88-35551D6035DE}
+		{C27E4707-07B8-43B4-867B-7C267FF2995D} = {C27E4707-07B8-43B4-867B-7C267FF2995D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Domains", "GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj", "{C27E4707-07B8-43B4-867B-7C267FF2995D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Presenter", "GBReaderHanusH.Presenter\GBReaderHanusH.Presenter.csproj", "{81517823-3F6E-43D8-9125-1411D75DF563}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Repository", "GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj", "{7A5603D3-6FE7-4990-AA88-35551D6035DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Infrastructure", "GBReaderHanusH.Infrastructure\GBReaderHanusH.Infrastructure.csproj", "{15292389-FD87-4F84-881E-16181B7DD776}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +30,25 @@ Global
 		{388D846F-D725-4C11-8CE8-A906C36AD5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{388D846F-D725-4C11-8CE8-A906C36AD5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{388D846F-D725-4C11-8CE8-A906C36AD5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDC5087-4CE4-4042-8EA4-B7817729707E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDC5087-4CE4-4042-8EA4-B7817729707E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDC5087-4CE4-4042-8EA4-B7817729707E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDC5087-4CE4-4042-8EA4-B7817729707E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27E4707-07B8-43B4-867B-7C267FF2995D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27E4707-07B8-43B4-867B-7C267FF2995D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27E4707-07B8-43B4-867B-7C267FF2995D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27E4707-07B8-43B4-867B-7C267FF2995D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81517823-3F6E-43D8-9125-1411D75DF563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81517823-3F6E-43D8-9125-1411D75DF563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81517823-3F6E-43D8-9125-1411D75DF563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81517823-3F6E-43D8-9125-1411D75DF563}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5603D3-6FE7-4990-AA88-35551D6035DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5603D3-6FE7-4990-AA88-35551D6035DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5603D3-6FE7-4990-AA88-35551D6035DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5603D3-6FE7-4990-AA88-35551D6035DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15292389-FD87-4F84-881E-16181B7DD776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15292389-FD87-4F84-881E-16181B7DD776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15292389-FD87-4F84-881E-16181B7DD776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15292389-FD87-4F84-881E-16181B7DD776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
