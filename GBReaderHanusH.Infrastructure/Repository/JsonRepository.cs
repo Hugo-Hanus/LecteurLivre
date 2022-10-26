@@ -47,7 +47,8 @@ public class JsonRepository : IRepository
             }
             else
             {
-                return false;
+                Library = new Library();
+                return true;
             }
         }
         else
@@ -60,15 +61,17 @@ public class JsonRepository : IRepository
     {
         try
         {
-            using StreamReader rider = new StreamReader(Path);
-            var jsonString = rider.ReadToEnd();
+            using StreamReader reader = new StreamReader(Path);
+            var jsonString = reader.ReadToEnd();
             DtoLibrary? dtoLibrary = JsonConvert.DeserializeObject<DtoLibrary>(jsonString);
             return dtoLibrary;
         }
         catch (JsonSerializationException e)
         {
             Console.WriteLine(e);
-            return null;
+            SortedDictionary<string, DtoGameBook> libEmpty;
+            
+            return null ;
         }
     }
 }

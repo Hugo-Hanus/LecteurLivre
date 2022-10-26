@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj" />
+      <ProjectReference Include="..\GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj" />
     </ItemGroup>
 
 </Project>

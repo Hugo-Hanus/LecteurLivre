@@ -19,4 +19,9 @@ public class GameBook
     public string Resume { get; set; }
 
     public User User { get; set; }
+
+    public override string ToString()
+    {
+        return Isbn + "|" +Title+"|"+ User.ToString()+"|"+Resume;
+    }
 }

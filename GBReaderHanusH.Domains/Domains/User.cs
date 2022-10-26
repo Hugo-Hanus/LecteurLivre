@@ -18,4 +18,9 @@ public class User
         get;
         set;
     }
+
+    public override string ToString()
+    {
+        return Firstname + "." + Name;
+    }
 }
