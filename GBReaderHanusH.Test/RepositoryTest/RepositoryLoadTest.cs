@@ -11,7 +11,6 @@ public class RepositoryLoadTest
     [Test]
     public void GoodSituationTwoBook()
     {
-        
         IMapper mapperOne = new MapperOne();
         var library = new Library();
         const string path = @"..\..\..\resources\GoodSituation\190533.json";
@@ -27,7 +26,7 @@ public class RepositoryLoadTest
         var library = new Library();
         const string path = @"..\..\..\resources\NotGoodFormat\190533.json";
         IRepository repo = new JsonRepository(mapperOne,library,path);
-        Assert.That(repo.LoadBook(),Is.EqualTo(true));
+        Assert.That(repo.LoadBook(),Is.EqualTo(false));
         Assert.That(repo.Library.SizeOfLibrary(), Is.EqualTo(0));
     }
     [Test]
@@ -49,7 +48,7 @@ public class RepositoryLoadTest
         var library = new Library();
         const string path = @"..\..\..\resources\FileEmpty\190533.json";
         IRepository repo = new JsonRepository(mapperOne,library,path);
-        Assert.That(repo.LoadBook(),Is.EqualTo(true));
+        Assert.That(repo.LoadBook(),Is.EqualTo(false));
         Assert.That(repo.Library.SizeOfLibrary(), Is.EqualTo(0));
     }
 }

@@ -16,7 +16,7 @@ public class JsonRepository : IRepository
         Library = library;
         Path = path;
     }
-    public IMapper Mapper
+    private IMapper Mapper
     {
         get;
         set;
@@ -31,25 +31,27 @@ public class JsonRepository : IRepository
         get;
         set;
     }
-    
-    
-    //private readonly string? PATH = System.Environment.GetEnvironmentVariable("USERPROFILE")+"/ue36/190533.json";
     public bool LoadBook()
     {
-        
         if (File.Exists(Path))
         {
-            var dtoLibrary = ImportFile();
-            if (dtoLibrary != null)
+            DtoLibrary dtoLibrary;
+            try
+            { dtoLibrary = ImportFile();
+            }
+            catch (EmptyJsonFileException)
+            {
+                return false;
+            }
+            try
             {
                 Library = Mapper.DtoLibraryToLibrary(dtoLibrary);
-                return true;
             }
-            else
+            catch (NotFormatJsonException)
             {
-                Library = new Library();
                 return true;
             }
+            return true;
         }
         else
         {
@@ -66,12 +68,9 @@ public class JsonRepository : IRepository
             DtoLibrary? dtoLibrary = JsonConvert.DeserializeObject<DtoLibrary>(jsonString);
             return dtoLibrary;
         }
-        catch (JsonSerializationException e)
+        catch (JsonSerializationException)
         {
-            Console.WriteLine(e);
-            SortedDictionary<string, DtoGameBook> libEmpty;
-            
-            return null ;
+            throw new EmptyJsonFileException();
         }
     }
 }

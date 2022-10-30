@@ -20,8 +20,7 @@ public class GameBook
 
     public User User { get; set; }
 
-    public override string ToString()
-    {
-        return Isbn + "|" +Title+"|"+ User.ToString()+"|"+Resume;
-    }
+    public override string ToString() => Isbn + "|" +Title+"|"+ User.ToString()+"|"+Resume;
+
+    public string ToDetail() => "Auteur: " + User.ToString() + "\n\nISBN: " + Isbn + "\n\nTitre: " + Title + "\n\nRésumé: " + Resume;
 }

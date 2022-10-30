@@ -7,10 +7,20 @@
         <Nullable>enable</Nullable>
         <RootNamespace>Presenter</RootNamespace>
     </PropertyGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="../CodeMetricsConfig.txt" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj" />
       <ProjectReference Include="..\GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Ncss.Analyzer" Version="1.0.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 
 </Project>

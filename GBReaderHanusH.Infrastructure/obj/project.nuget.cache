@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "qFNAjDV0gWxIoP2HpNmIUHNOf46vCFwEtzDEDsSZLSOjL7BMGAvmoIRRxOpowc2fUk8wQc+weqUXetpIgzDYfA==",
+  "success": true,
+  "projectFilePath": "C:\\HELMO\\2022\\AI\\GBReaderHanusH\\GBReaderHanusH.Infrastructure\\GBReaderHanusH.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hanus\\.nuget\\packages\\ncss.analyzer\\1.0.0\\ncss.analyzer.1.0.0.nupkg.sha512",
+    "C:\\Users\\hanus\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

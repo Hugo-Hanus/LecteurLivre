@@ -2,6 +2,11 @@
 
 public class DtoUser
 {
-    public string firstname = "";
-    public string name = "";
+    public DtoUser(string firstname, string name)
+    {
+        Firstname = firstname;
+        Name = name;
+    }
+    public string Firstname { get; set; }
+    public string Name { get; set; }
 }

@@ -1,0 +1,15 @@
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\bin\Debug\net6.0\GBReaderHanusH.Domains.exe
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\bin\Debug\net6.0\GBReaderHanusH.Domains.deps.json
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\bin\Debug\net6.0\GBReaderHanusH.Domains.runtimeconfig.json
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\bin\Debug\net6.0\GBReaderHanusH.Domains.dll
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\bin\Debug\net6.0\GBReaderHanusH.Domains.pdb
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.csproj.AssemblyReference.cache
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.GeneratedMSBuildEditorConfig.editorconfig
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.AssemblyInfoInputs.cache
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.AssemblyInfo.cs
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.csproj.CoreCompileInputs.cache
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.dll
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\refint\GBReaderHanusH.Domains.dll
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.pdb
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\GBReaderHanusH.Domains.genruntimeconfig.cache
+C:\HELMO\2022\AI\GBReaderHanusH\GBReaderHanusH.Domains\obj\Debug\net6.0\ref\GBReaderHanusH.Domains.dll

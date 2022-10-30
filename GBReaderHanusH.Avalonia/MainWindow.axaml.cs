@@ -1,128 +1,81 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using GBReaderHanusH.Domains.Domains;
-using GBReaderHanusH.Infrastructure.Mapper;
-using GBReaderHanusH.Infrastructure.Repository;
-using GBReaderHanusH.Repository.Repository;
+using Presenter.Events;
+using Presenter.mvp;
 
 
 namespace GBReaderHanusH.Avalonia
 {
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,IMainView
     {
-        private AvaloniaList<string> myList=new AvaloniaList<string>();
-        private Library lib;
-
+        private readonly AvaloniaList<string> _gameBookList = new AvaloniaList<string>();
+        private  string _details="";
         public MainWindow()
         {
+            
             InitializeComponent();
-            IMapper mapper = new MapperOne();
-            lib = new Library();
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+@"\ue36\190533.json";
-            IRepository jsonRepository = new JsonRepository(mapper, lib, path);
-            if (jsonRepository.LoadBook())
-            {
-                lib=jsonRepository.Library;
-                if (lib.SizeOfLibrary() > 0)
-                {
-                    myList= LibraryToList();
-                    SetMessage("#007F00","Fichier chargé avec Succès");
-                    LibraryList.Items = myList;
-                    ResumeBlock.IsVisible = true;
-                    ResumeText.Text = lib.GetLibrary().First().Value.Resume;
-                }
-                else
-                {
-                    ResearchBlock.IsVisible = false;
-                    LibraryList.IsVisible = false;
-                    SetMessage("#FFA500","Pas de livre dans le fichier");
-                }
-            }
-            else
-            {
-                ResearchBlock.IsVisible = false;
-                LibraryList.IsVisible = false;
-                
-                SetMessage("#ff0000", "Erreur lors du chargment du fichier");
-            }
+            LibraryList.Items = _gameBookList;
+            ResumeText.Text = _details;
+            Deux.IsVisible = false;
+            Trois.IsVisible = false;
+
         }
-
-        private AvaloniaList<string> LibraryToList()
-        {
-            foreach (var gameBook in lib.GetLibrary())
-            {
-                myList.Add(gameBook.Value.ToString());
-            }
-
-            return myList;
-        }
-
+      
         private void Resume_OnClick(object? sender, SelectionChangedEventArgs args)
         {
-            ResumeBlock.IsVisible = true;
-            var item = LibraryList.SelectedItem;
-            var itemS = item.ToString();
-            var isbn =itemS[..13];
-            var a=lib.GetLibrary();
-            ResumeText.Text = a[isbn].Resume;
-
-
-
+            object? selectedItem = LibraryList.SelectedItem;
+            var element= selectedItem.ToString();
+           GamebookSelected ?.Invoke(this,new GameBookEventArgs(element));
+           
         }
         private void Research_OnClick(object? sender, RoutedEventArgs args)
         {
-            myList.Clear();
-            string search = Research.Text;
-            if (!search.Equals(""))
-            {
-                ResearchListUpdate(search);
-            }
-            else
-            {
-                myList = LibraryToList();
-            }
-
-            if (myList.Count == 0)
-            {
-                SetMessage("#FFA500", "Aucun résultat pour : " + search);
-            }
-            else
-            {
-                SetMessage("#000000", "Résultat pour : " + search);
-            }
-            LibraryList.Items= myList;
-           
-
+            var element= Research.Text;
+            SearchGameBook ?.Invoke(this,new GameBookEventArgs(element));
+            
         }
 
-        private void ResearchListUpdate(string search)
-        {
-            foreach (var keyValue in lib.GetLibrary())
-            {
-                if (keyValue.Key.Equals(search))
-                {
-                    myList.Add(keyValue.Value.ToString());
-                }
-
-                if (keyValue.Value.Title.Contains(search))
-                {
-                    myList.Add(keyValue.Value.ToString());
-                }
-            }
-        }
-
-        private void SetMessage(string color, string content)
-        {
+        public void PushMessage(string color, string message) {
             Message.Foreground = SolidColorBrush.Parse(color);
-            Message.Text = content;
+            Message.Text = message;
         }
+
+        public void GetContentView(bool fileLoaded)
+        {
+            if (fileLoaded) { Content.IsVisible = true; } else { Content.IsVisible = false; }
+        }
+       
+
+        public IEnumerable<string> Items
+        {
+            get =>_gameBookList;
+            set
+            {
+                _gameBookList.Clear();
+                _gameBookList.AddRange(value);
+                LibraryList.Items = _gameBookList;
+            }
+        }
+        public string GameBookDetail
+        {
+            get => _details;
+            set
+            {
+                _details = value;
+                ResumeText.Text = _details;
+             }
+        }
+
+
+        public event GameBookEventHandler? GamebookSelected;
+        public event GameBookEventHandler? SearchGameBook;
+
     }
 }
