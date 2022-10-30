@@ -2,9 +2,21 @@
 
 public class DtoGameBook
 {
-    public string Isbn="";
-    public string Title="";
-    public string Resume="";
-    public DtoUser UserDto=new DtoUser();
+    public DtoGameBook(string title, string isbn, string resume, DtoUser userDto)
+    {
+        Isbn = isbn;
+        Title = title;
+        Resume = resume;
+        UserDto = userDto;
+    }
+
+    public string Isbn
+    {
+        get;
+        set;
+    }
+    public string Title { get; set; }
+    public string Resume { get; set; }
+    public DtoUser UserDto { get; set; }
     
 }

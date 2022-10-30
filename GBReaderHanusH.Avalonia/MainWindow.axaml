@@ -8,33 +8,32 @@
         <TabControl>
                 <TabItem Header="Accueil">
                         <StackPanel>
-                                <StackPanel IsVisible="True">
-                        <Grid Name="ResearchBlock" ColumnDefinitions="300,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Recherche" />
-                                <TextBox Name ="Research" Grid.Row="1" Grid.Column="0" Watermark="Recherche"/>
-                                <Button Click="Research_OnClick" Grid.Row="1" Grid.Column="1">Recherche</Button>
-                        </Grid>
-                                <Grid ColumnDefinitions="350,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
-                                <ListBox SelectionChanged="Resume_OnClick" SelectionMode="Single" Grid.Row="0" Grid.Column="0" Height="350" Width="400" IsVisible="True" HorizontalAlignment="Left" Name="LibraryList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
-                                </ListBox>
-                                        <StackPanel Name ="ResumeBlock" IsVisible="False" Grid.Row="0" Grid.Column="2">
-                                                <TextBlock>Résumé :</TextBlock>
-                                                <TextBlock TextWrapping="Wrap" Name ="ResumeText"></TextBlock>
-                                                <Button>Commencer ou reprendre la lecture</Button>
-                                        </StackPanel>
-                                        
-                                </Grid>
-                        </StackPanel>
+                                <StackPanel Name="Content" IsVisible="False">
+                                        <Grid Name="ResearchBlock" ColumnDefinitions="300,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Recherche" />
+                                                <TextBox x:Name ="Research" Grid.Row="1" Grid.Column="0" Watermark="Recherche"/>
+                                                <Button Click="Research_OnClick" Grid.Row="1" Grid.Column="1">Recherche</Button>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="350,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
+                                                <ListBox SelectionChanged="Resume_OnClick" SelectionMode="Single" Grid.Row="0" Grid.Column="0" Height="350" Width="400" IsVisible="True" HorizontalAlignment="Left" Name="LibraryList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
+                                                </ListBox>
+                                                <StackPanel Name ="ResumeBlock" IsVisible="True" Grid.Row="0" Grid.Column="2">
+                                                        <TextBlock>Résumé :</TextBlock>
+                                                        <TextBlock TextWrapping="Wrap" x:Name ="ResumeText"></TextBlock>
+                                                        <Button>Commencer ou reprendre la lecture</Button>
+                                                </StackPanel>
+                                        </Grid>
+                                </StackPanel>
                                 <StackPanel  Name="NoBook" IsVisible="True">
                                         <TextBlock TextAlignment="Left">Message: </TextBlock>
-                                        <TextBlock Name="Message" TextAlignment="Left"></TextBlock>
+                                        <TextBlock x:Name="Message" TextAlignment="Left"></TextBlock>
                                 </StackPanel>
                         </StackPanel>
                 </TabItem>
-                <TabItem Header="Deux">
+                <TabItem Header="Deux" Name="Deux">
                       
                 </TabItem>
-                <TabItem Header="Trois">
+                <TabItem Header="Trois" Name="Trois">
                 </TabItem>
         </TabControl>
 </Window>

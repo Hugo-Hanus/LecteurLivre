@@ -19,8 +19,6 @@ public class User
         set;
     }
 
-    public override string ToString()
-    {
-        return Firstname + "." + Name;
-    }
+    public override string ToString() => Firstname + " " + Name;
+    
 }
