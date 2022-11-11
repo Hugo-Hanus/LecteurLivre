@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EoXhXkV0FOlgCx9EiRyBjn9SJ0WCNqjhBhFkGN3svXXFJBC3UhddPxKL1Ilff2drcoR1Y2MAfosEzSmRA6MuCA==",
+  "dgSpecHash": "fFVeiBlzrE1OZA8lnf9ASRN5KyaGXOlT9Lsy0XE331aNOKOUp5+dNK5g6D0ujo0dGDH0PmBFCw102y2Wx2rjiA==",
   "success": true,
   "projectFilePath": "C:\\HELMO\\2022\\AI\\GBReaderHanusH\\GBReaderHanusH.Domains\\GBReaderHanusH.Domains.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hanus\\.nuget\\packages\\lcom.analyzer\\1.0.0.1\\lcom.analyzer.1.0.0.1.nupkg.sha512",
     "C:\\Users\\hanus\\.nuget\\packages\\ncss.analyzer\\1.0.0\\ncss.analyzer.1.0.0.nupkg.sha512"
   ],
   "logs": []

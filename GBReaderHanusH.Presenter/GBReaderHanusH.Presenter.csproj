@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -13,14 +13,24 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj" />
+      <ProjectReference Include="..\GBReaderHanusH.Infrastructure\GBReaderHanusH.Infrastructure.csproj" />
       <ProjectReference Include="..\GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Lcom.Analyzer" Version="1.0.0.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Ncss.Analyzer" Version="1.0.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\" />
+      <Folder Include="Routes\" />
     </ItemGroup>
 
 </Project>

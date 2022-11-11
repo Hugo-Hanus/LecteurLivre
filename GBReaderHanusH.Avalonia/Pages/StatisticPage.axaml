@@ -1,0 +1,24 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GBReaderHanusH.Avalonia.Pages.StatisticPage">
+    <StackPanel Background="#B9D6F2">
+        <StackPanel>
+            <Button x:Name="Home" Click="Home_OnClick" HorizontalContentAlignment="Left" CornerRadius="10"  HorizontalAlignment="Left" Background="#B0F2B4" >Accueil</Button> 
+            <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="5" Margin="5" Background="#DCCE4F">
+                <TextBlock  Padding="5" >Statistiques : Livre | Début de lecture | Dernière mise à jour </TextBlock>
+            </Border>
+        </StackPanel>
+        <WrapPanel HorizontalAlignment="Center" Orientation="Vertical">
+            <ListBox Background="#985F99" Foreground="White" SelectionMode="Single" Height="300" Width="600" IsVisible="True" HorizontalAlignment="Center" Name="StatisticList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
+            </ListBox>
+			<WrapPanel  Orientation="Horizontal">
+			<TextBlock  Padding="5" >Nombre de Session de Lecture:  </TextBlock>
+			<TextBlock x:Name="NumberSession" Padding="5" >5</TextBlock>
+		    </WrapPanel>
+		</WrapPanel>
+    </StackPanel>
+    
+</UserControl>

@@ -1,45 +1,39 @@
 ﻿using GBReaderHanusH.Domains.Domains;
 using GBReaderHanusH.Infrastructure.DTO;
-using GBReaderHanusH.Infrastructure.Repository;
+using GBReaderHanusH.Repository.CustomException;
 
 namespace GBReaderHanusH.Infrastructure.Mapper;
 
-public class MapperOne:IMapper
+public class MapperOne : IMapper
 {
-    public DtoLibrary LibraryToDtoLibrary(Library library)
+    public History DtoHistoryToHistory(DtoHistory dtoHistory)
     {
-        SortedDictionary<string, DtoGameBook> dtoLibrary = new SortedDictionary<string, DtoGameBook>();
-        DtoLibrary dto = new DtoLibrary(dtoLibrary);
-        foreach (var list in library.GetLibrary())
+        IDictionary<string, Session> newHistory = new Dictionary<string, Session>();
+        if (dtoHistory == null) { throw new NotFormatJsonException(); }
+        if(dtoHistory.DtoListSession == null) { throw new EmptyJsonFileException(); }
+        foreach (var session in dtoHistory.DtoListSession)
         {
-            dto.DtoLibrarie.Add(list.Key,GameBookToDtoGameBook(list.Value));
+            newHistory.Add(session.Key, DtoSessionToSession(session.Value));
         }
-
-        return dto;
-    }
-
-    public Library DtoLibraryToLibrary(DtoLibrary dto)
-    {
-        IDictionary<string, GameBook> newLibrary = new SortedDictionary<string, GameBook>();
-        if (dto == null) throw new NotFormatJsonException();
-        foreach (var list in dto.DtoLibrarie)
+        History history = new()
         {
-            newLibrary.Add(list.Key,DtoGameBookToGameBook(list.Value));
+            SessionList = newHistory
+        };
+        return history;
+    }
+
+    private Session DtoSessionToSession(DtoSession dto) => new(dto.Begin, dto.LastUpdate,dto.Title, dto.Page);
+
+    public DtoHistory HistoryToDtoHistory(History history)
+    {
+        Dictionary<string, DtoSession> dtoHistory=new Dictionary<string, DtoSession>();
+        
+        foreach(var session in history.SessionList)
+        {
+            dtoHistory.Add(session.Key, SessionToDtoSession(session.Value));
         }
-
-        Library lib = new Library();
-        lib.SetLibrary(newLibrary);
-        return lib;
+        return new(dtoHistory);
     }
 
-    private static DtoGameBook GameBookToDtoGameBook(GameBook gb)
-    {
-        DtoGameBook dto = new DtoGameBook(gb.Title, gb.Isbn, gb.Resume, new DtoUser(gb.User.Firstname, gb.User.Name));
-        return dto;
-    }
-
-    private static GameBook DtoGameBookToGameBook(DtoGameBook dto)
-    {
-        return new GameBook(dto.Title,dto.Resume,dto.Isbn,new User(dto.UserDto.Firstname,dto.UserDto.Name));
-    }
+    private DtoSession SessionToDtoSession(Session session) => new DtoSession(session.Begin,session.LastUpdate,session.Title,session.Page);
 }

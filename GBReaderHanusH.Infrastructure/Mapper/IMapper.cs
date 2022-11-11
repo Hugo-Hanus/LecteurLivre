@@ -5,6 +5,6 @@ namespace GBReaderHanusH.Infrastructure.Mapper;
 
 public interface IMapper
 {
-     DtoLibrary LibraryToDtoLibrary(Library library);
-     Library DtoLibraryToLibrary(DtoLibrary library);
+    DtoHistory HistoryToDtoHistory(History history);
+     History DtoHistoryToHistory(DtoHistory dtoHistory);
 }

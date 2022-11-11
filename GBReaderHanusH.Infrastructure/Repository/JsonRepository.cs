@@ -1,27 +1,27 @@
-﻿
-using GBReaderHanusH.Domains.Domains;
-using GBReaderHanusH.Infrastructure.Mapper;
+﻿using GBReaderHanusH.Infrastructure.Mapper;
 using GBReaderHanusH.Infrastructure.DTO;
 using GBReaderHanusH.Repository.Repository;
+using GBReaderHanusH.Repository.CustomException;
 using Newtonsoft.Json;
-
+using GBReaderHanusH.Domains.Domains;
 
 namespace GBReaderHanusH.Infrastructure.Repository;
 
 public class JsonRepository : IRepository
 {
-    public JsonRepository(IMapper mapper, Library library, string path)
+
+    public JsonRepository(IMapper mapper, History history, string path)
     {
         Mapper = mapper;
-        Library = library;
+        History = history;
         Path = path;
     }
-    private IMapper Mapper
+    public IMapper Mapper
     {
         get;
         set;
     }
-    public Library Library
+    public History History
     {
         get;
         set;
@@ -31,46 +31,83 @@ public class JsonRepository : IRepository
         get;
         set;
     }
-    public bool LoadBook()
+
+    public void LoadHistory()
     {
-        if (File.Exists(Path))
+        DtoHistory dtoHistory;
+        dtoHistory = ImportFile();
+        History = Mapper.DtoHistoryToHistory(dtoHistory);
+    }
+
+    private DtoHistory ImportFile()
+    {
+        var jsonString = "";
+        var pathComplete = Path + @"\ue36\190533-session.json";
+        try
         {
-            DtoLibrary dtoLibrary;
-            try
-            { dtoLibrary = ImportFile();
-            }
-            catch (EmptyJsonFileException)
+            if (File.Exists(pathComplete))
             {
-                return false;
+                using StreamReader reader = new(pathComplete);
+                    jsonString = reader.ReadToEnd();
+                    reader.Close();
             }
-            try
+            else
             {
-                Library = Mapper.DtoLibraryToLibrary(dtoLibrary);
+                throw new EmptyJsonFileException();
             }
-            catch (NotFormatJsonException)
-            {
-                return true;
-            }
-            return true;
+            IDictionary<string, DtoSession>? listSession = JsonConvert.DeserializeObject<IDictionary<string, DtoSession>>(jsonString);
+            return new(listSession??new Dictionary<string,DtoSession>());
         }
-        else
+        catch (JsonReaderException)
         {
-            return false;
+            throw new NotFormatJsonException();
+        }
+        
+        
+    }
+
+    public void SaveHistory(History history)
+    {
+        var pathComplete = Path + @"\ue36\190533-session.json";
+        DtoHistory dtoHistory = Mapper.HistoryToDtoHistory(history);
+        string output = JsonConvert.SerializeObject(dtoHistory.DtoListSession);
+        if (output == null) { throw new NotAbleSaveException(); }
+        CheckDirectory();
+            try
+            {
+                using FileStream fs = new(pathComplete, FileMode.Create);
+                {
+                    using TextWriter writer = new StreamWriter(fs);
+                    {
+                        writer.WriteLine(output);
+                        writer.Close();
+                    }
+                }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                throw new NotAbleSaveException();
+            }
+        catch (IOException)
+        {
+            throw new NotAbleSaveException();
+        }
+        
+    }
+
+    private void CheckDirectory()
+    {
+
+        
+            if (!Directory.Exists(Path + @"\ue36"))
+            {
+                Directory.CreateDirectory(Path + @"\ue36");
+             
+            }
+            if (!File.Exists(Path + @"\ue36\190533-session.json"))
+            {
+            using FileStream fs = File.Create(Path + @"\ue36\190533-session.json");
         }
     }
 
-    private DtoLibrary? ImportFile()
-    {
-        try
-        {
-            using StreamReader reader = new StreamReader(Path);
-            var jsonString = reader.ReadToEnd();
-            DtoLibrary? dtoLibrary = JsonConvert.DeserializeObject<DtoLibrary>(jsonString);
-            return dtoLibrary;
-        }
-        catch (JsonSerializationException)
-        {
-            throw new EmptyJsonFileException();
-        }
-    }
 }

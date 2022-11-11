@@ -1,81 +1,62 @@
 using System;
 using System.Collections.Generic;
-using Avalonia.Collections;
 using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Avalonia.Media;
-using Presenter.Events;
-using Presenter.mvp;
+using Avalonia.Controls.Notifications;
+using Presenter.Notification;
+using Presenter.Routes;
 
 
 namespace GBReaderHanusH.Avalonia
 {
 
-    public partial class MainWindow : Window,IMainView
+
+    /*
+     ECOUTE EVENT ABONNER WINDOWS CLOSING QUE DANS LA VUE SINON !!!! AVALONIA DANS LE PRESENTER
+     
+     */
+    public partial class MainWindow : Window, IBrowseToViews, IShowNotifications
     {
-        private readonly AvaloniaList<string> _gameBookList = new AvaloniaList<string>();
-        private  string _details="";
+        private readonly IDictionary<string, UserControl> _pages = new Dictionary<string, UserControl>();
+        private readonly WindowNotificationManager _notificationManager;
+
         public MainWindow()
         {
-            
             InitializeComponent();
-            LibraryList.Items = _gameBookList;
-            ResumeText.Text = _details;
-            Deux.IsVisible = false;
-            Trois.IsVisible = false;
-
-        }
-      
-        private void Resume_OnClick(object? sender, SelectionChangedEventArgs args)
-        {
-            object? selectedItem = LibraryList.SelectedItem;
-            var element= selectedItem.ToString();
-           GamebookSelected ?.Invoke(this,new GameBookEventArgs(element));
-           
-        }
-        private void Research_OnClick(object? sender, RoutedEventArgs args)
-        {
-            var element= Research.Text;
-            SearchGameBook ?.Invoke(this,new GameBookEventArgs(element));
-            
+            _notificationManager = new WindowNotificationManager(this)
+            {
+                Position = NotificationPosition.BottomRight
+            };
         }
 
-        public void PushMessage(string color, string message) {
-            Message.Foreground = SolidColorBrush.Parse(color);
-            Message.Text = message;
+        internal void RegisterPage(string pageName, UserControl page)
+        {
+            _pages[pageName] = page;
+            if (Content == null)
+            {
+                Content = page;
+            }
         }
 
-        public void GetContentView(bool fileLoaded)
+        public void GoTo(string namePage)
         {
-            if (fileLoaded) { Content.IsVisible = true; } else { Content.IsVisible = false; }
+            Content = _pages[namePage];
         }
        
 
-        public IEnumerable<string> Items
+        public void Push(NotificationSeverity severity, string title, string message)
         {
-            get =>_gameBookList;
-            set
+            var notification = new Notification(title, message, severity switch
             {
-                _gameBookList.Clear();
-                _gameBookList.AddRange(value);
-                LibraryList.Items = _gameBookList;
+                NotificationSeverity.Info => NotificationType.Information,
+                NotificationSeverity.Warning => NotificationType.Warning,
+                NotificationSeverity.Success => NotificationType.Success,
+                _ => NotificationType.Error,
+            });
+
+            if (this.IsVisible)
+            {
+                _notificationManager.Show(notification);
             }
         }
-        public string GameBookDetail
-        {
-            get => _details;
-            set
-            {
-                _details = value;
-                ResumeText.Text = _details;
-             }
-        }
-
-
-        public event GameBookEventHandler? GamebookSelected;
-        public event GameBookEventHandler? SearchGameBook;
-
     }
 }

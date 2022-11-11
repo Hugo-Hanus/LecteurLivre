@@ -14,5 +14,6 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgNcss_Analyzer Condition=" '$(PkgNcss_Analyzer)' == '' ">C:\Users\hanus\.nuget\packages\ncss.analyzer\1.0.0</PkgNcss_Analyzer>
+    <PkgLcom_Analyzer Condition=" '$(PkgLcom_Analyzer)' == '' ">C:\Users\hanus\.nuget\packages\lcom.analyzer\1.0.0.1</PkgLcom_Analyzer>
   </PropertyGroup>
 </Project>

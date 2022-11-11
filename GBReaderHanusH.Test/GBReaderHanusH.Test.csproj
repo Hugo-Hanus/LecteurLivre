@@ -10,10 +10,6 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
-        <PackageReference Include="Ncss.Analyzer" Version="1.0.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="NUnit" Version="3.13.3" />
         <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
@@ -23,9 +19,10 @@
 
     <ItemGroup>
       <Folder Include="resources\Empty" />
-    </ItemGroup>
-    <ItemGroup>
-        <AdditionalFiles Include="../CodeMetricsConfig.txt" />
+      <Folder Include="resources\CreateDirectory\" />
+      <Folder Include="resources\FileUe36\ue36\" />
+      <Folder Include="resources\save\" />
+      <Folder Include="resources\test\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -33,5 +30,7 @@
       <ProjectReference Include="..\GBReaderHanusH.Presenter\GBReaderHanusH.Presenter.csproj" />
       <ProjectReference Include="..\GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj" />
     </ItemGroup>
+
+    <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

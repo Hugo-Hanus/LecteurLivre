@@ -1,0 +1,36 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GBReaderHanusH.Avalonia.Pages.ReadPage">
+    <StackPanel Background="#B9D6F2">
+        <WrapPanel>
+            <Button HorizontalContentAlignment="Left" x:Name="Home" Click="Home_OnClick" CornerRadius="10" HorizontalAlignment="Left" Background="#B0F2B4" >Accueil</Button>    
+            <Border HorizontalAlignment="Center" BorderThickness="2" BorderBrush="White"  Padding="5" Margin="5" CornerRadius="10" Background="#985F99">
+            <WrapPanel>
+                <TextBlock Foreground="White" Padding="5" >ISBN : </TextBlock>
+                <TextBlock x:Name="IsbnText" Foreground="White" Padding="5">0-000000-00-0</TextBlock>
+                <TextBlock Foreground="White" Padding="5">| Titre : </TextBlock>
+                <TextBlock x:Name="TitleText" Foreground="White" Padding="5">Titre du livreaaaaaaaaaaaaaaaaaaa</TextBlock>
+            </WrapPanel>
+            </Border>
+        </WrapPanel>
+        <Grid Margin="10"  ColumnDefinitions="60,650" RowDefinitions="Auto,Auto,Auto" >
+            <Border Grid.Column="0" Grid.Row="0" CornerRadius="10" BorderThickness="1" BorderBrush="White" Background="#985F99">
+            <StackPanel  Orientation="Horizontal" >
+                <TextBlock FontSize="10" Foreground="White" Padding="5">Page: </TextBlock>
+                <TextBlock x:Name="PageNumberText" FontSize="10" Foreground="White" Padding="5">1</TextBlock>
+            </StackPanel>
+                </Border>
+			<StackPanel HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1">
+				<TextBlock x:Name="TextPage" FontSize="11" TextWrapping="Wrap"  Padding="5">
+					aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				</TextBlock>
+			</StackPanel>
+            <WrapPanel HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Orientation="Horizontal" x:Name="Choices">
+				
+            </WrapPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>

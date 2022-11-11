@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GBReaderHanusH.Avalonia.Pages.HomePage">
+        <StackPanel Background="#B9D6F2">
+                <WrapPanel>
+                        <Button x:Name="Home"  HorizontalContentAlignment="Left" CornerRadius="10" HorizontalAlignment="Left"  Background="#B0F2B4" >Accueil</Button>    
+                        <Button x:Name="Stats" Click="Stats_OnClick" HorizontalContentAlignment="Left" CornerRadius="10" HorizontalAlignment="Left" Background="#DCCE4F" >Statistiques</Button>    
+                        
+                </WrapPanel>
+                <StackPanel Name="Content" IsVisible="true">
+                                        <Grid Name="ResearchBlock" ColumnDefinitions="300,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Recherche :" />
+                                                <TextBox x:Name ="Research" Grid.Row="1" Grid.Column="0" Watermark="Recherche"/>
+                                                <Button  Grid.Row="1" Grid.Column="1" Background="#F2E2BA" Click="Research_OnClick">Recherche</Button>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="350,1.5*,4*" RowDefinitions="Auto,Auto,Auto"  Margin="4" >
+                                                <ListBox x:Name="LibraryList" Background="#985F99" Foreground="White" SelectionChanged="Resume_OnClick" SelectionMode="Single" Grid.Row="0" Grid.Column="0" Height="350" Width="400" IsVisible="True" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                                                <StackPanel Name ="ResumeBlock" IsVisible="False" Grid.Row="0" Grid.Column="2">
+                                                        <TextBlock>Résumé :</TextBlock>
+                                                        <TextBlock TextWrapping="Wrap" x:Name ="ResumeText" Text="Un resumé"></TextBlock>
+                                                        <Button Click="Read_OnClick" Background="#F2E2BA">Commencer ou reprendre la lecture</Button>
+                                                </StackPanel>
+                                        </Grid>
+                                </StackPanel>
+        </StackPanel>
+</UserControl>

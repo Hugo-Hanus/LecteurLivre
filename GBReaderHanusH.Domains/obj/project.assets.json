@@ -2,12 +2,30 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Lcom.Analyzer/1.0.0.1": {
+        "type": "package"
+      },
       "Ncss.Analyzer/1.0.0": {
         "type": "package"
       }
     }
   },
   "libraries": {
+    "Lcom.Analyzer/1.0.0.1": {
+      "sha512": "F714fD5x9gX0WkX+bFYgapB8lZEer8F82QtPrqoOIoeFZkmCuP3tgsSfbIQ0rwdmmasK3zkakcdecbILcH4OLg==",
+      "type": "package",
+      "path": "lcom.analyzer/1.0.0.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/Lcom.Analyzer.dll",
+        "lcom.analyzer.1.0.0.1.nupkg.sha512",
+        "lcom.analyzer.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
     "Ncss.Analyzer/1.0.0": {
       "sha512": "BNRXKCUjpUCv1Trkq0hy9hGT2ymRMNuyiWpqI7IApecr9D3YjFDa1G0JNPf+33D58F0YCNhusOsyD3+nBsAL0g==",
       "type": "package",
@@ -26,6 +44,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Lcom.Analyzer >= 1.0.0.1",
       "Ncss.Analyzer >= 1.0.0"
     ]
   },
@@ -68,6 +87,12 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Lcom.Analyzer": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.0.0.1, )"
+          },
           "Ncss.Analyzer": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -91,7 +116,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

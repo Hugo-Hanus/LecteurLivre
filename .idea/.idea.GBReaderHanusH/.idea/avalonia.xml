@@ -4,8 +4,12 @@
     <option name="projectPerEditor">
       <map>
         <entry key="GBReaderHanusH.Avalonia/App.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
+        <entry key="GBReaderHanusH.Avalonia/Controls/ChoiceView.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
         <entry key="GBReaderHanusH.Avalonia/ListGamebookView.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
         <entry key="GBReaderHanusH.Avalonia/MainWindow.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
+        <entry key="GBReaderHanusH.Avalonia/Pages/HomePage.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
+        <entry key="GBReaderHanusH.Avalonia/Pages/ReadPage.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
+        <entry key="GBReaderHanusH.Avalonia/Pages/StatisticPage.axaml" value="GBReaderHanusH.Avalonia/GBReaderHanusH.Avalonia.csproj" />
       </map>
     </option>
   </component>

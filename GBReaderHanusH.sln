@@ -1,24 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Avalonia", "GBReaderHanusH.Avalonia\GBReaderHanusH.Avalonia.csproj", "{388D846F-D725-4C11-8CE8-A906C36AD5BB}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBReaderHanusH.Avalonia", "GBReaderHanusH.Avalonia\GBReaderHanusH.Avalonia.csproj", "{388D846F-D725-4C11-8CE8-A906C36AD5BB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C27E4707-07B8-43B4-867B-7C267FF2995D} = {C27E4707-07B8-43B4-867B-7C267FF2995D}
 		{7A5603D3-6FE7-4990-AA88-35551D6035DE} = {7A5603D3-6FE7-4990-AA88-35551D6035DE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Test", "GBReaderHanusH.Test\GBReaderHanusH.Test.csproj", "{BFDC5087-4CE4-4042-8EA4-B7817729707E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBReaderHanusH.Test", "GBReaderHanusH.Test\GBReaderHanusH.Test.csproj", "{BFDC5087-4CE4-4042-8EA4-B7817729707E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7A5603D3-6FE7-4990-AA88-35551D6035DE} = {7A5603D3-6FE7-4990-AA88-35551D6035DE}
 		{C27E4707-07B8-43B4-867B-7C267FF2995D} = {C27E4707-07B8-43B4-867B-7C267FF2995D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Domains", "GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj", "{C27E4707-07B8-43B4-867B-7C267FF2995D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBReaderHanusH.Domains", "GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj", "{C27E4707-07B8-43B4-867B-7C267FF2995D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Presenter", "GBReaderHanusH.Presenter\GBReaderHanusH.Presenter.csproj", "{81517823-3F6E-43D8-9125-1411D75DF563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBReaderHanusH.Presenter", "GBReaderHanusH.Presenter\GBReaderHanusH.Presenter.csproj", "{81517823-3F6E-43D8-9125-1411D75DF563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Repository", "GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj", "{7A5603D3-6FE7-4990-AA88-35551D6035DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBReaderHanusH.Repository", "GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj", "{7A5603D3-6FE7-4990-AA88-35551D6035DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBReaderHanusH.Infrastructure", "GBReaderHanusH.Infrastructure\GBReaderHanusH.Infrastructure.csproj", "{15292389-FD87-4F84-881E-16181B7DD776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBReaderHanusH.Infrastructure", "GBReaderHanusH.Infrastructure\GBReaderHanusH.Infrastructure.csproj", "{15292389-FD87-4F84-881E-16181B7DD776}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{C1B74068-7D10-4C69-BB34-9B404561F83A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		..\..\..\..\Users\hanus\ue36\190533-session.json = ..\..\..\..\Users\hanus\ue36\190533-session.json
+		CodeMetricsConfig.txt = CodeMetricsConfig.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,5 +60,11 @@ Global
 		{15292389-FD87-4F84-881E-16181B7DD776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15292389-FD87-4F84-881E-16181B7DD776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15292389-FD87-4F84-881E-16181B7DD776}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46DCA408-2F51-4DAD-9142-FD778FD2690B}
 	EndGlobalSection
 EndGlobal
