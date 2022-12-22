@@ -10,13 +10,13 @@ namespace GBReaderHanusH.Infrastructure.Repository;
 public class JsonRepository : IRepository
 {
 
-    public JsonRepository(IMapper mapper, History history, string path)
+    public JsonRepository(ISessionMapper mapper, History history, string path)
     {
         Mapper = mapper;
         History = history;
         Path = path;
     }
-    public IMapper Mapper
+    public ISessionMapper Mapper
     {
         get;
         set;

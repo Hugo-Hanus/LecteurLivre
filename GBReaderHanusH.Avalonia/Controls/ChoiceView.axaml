@@ -4,5 +4,5 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GBReaderHanusH.Avalonia.Controls.ChoiceView">
-	<Button x:Name="ButtonChoice"   Margin="50 50 50 50" Content="Page" Click="ChoiceOnClick" CornerRadius="10" FontSize="11" >Button</Button>
+	<Button x:Name="ButtonChoice"   Margin="50 50 50 50" Content="Page" Click="ChoiceOnClick" CornerRadius="10" FontSize="11" ></Button>
 </UserControl>

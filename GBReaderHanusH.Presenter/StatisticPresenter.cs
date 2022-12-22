@@ -34,7 +34,7 @@ namespace Presenter
         }
         private static JsonRepository InitRepo()
         {
-            IMapper mapper = new MapperOne();
+            ISessionMapper mapper = new SessionMapperOne();
             History history = new ();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             return new JsonRepository(mapper, history, path);

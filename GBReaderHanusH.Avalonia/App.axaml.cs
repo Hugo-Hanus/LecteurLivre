@@ -42,9 +42,9 @@ namespace GBReaderHanusH.Avalonia
            
 
             /*View*/
-            var homePage = new HomePage();
-            var readPage = new ReadPage();
-            var statisticPage = new StatisticPage();
+            HomePage homePage = new HomePage();
+            ReadPage readPage = new ReadPage();
+            StatisticPage statisticPage = new StatisticPage();
             IReadDependencies readDependencies = new ReadDependencies
             {
                 View = readPage,
@@ -62,11 +62,11 @@ namespace GBReaderHanusH.Avalonia
 
             /*Presenter*/
 
-            var homePresenter = new HomePresenter(homeDependencies);
+            HomePresenter homePresenter = new HomePresenter(homeDependencies);
             
-            var readPresenter = new ReadPresenter(readDependencies);
+            ReadPresenter readPresenter = new ReadPresenter(readDependencies);
            
-            var statisticPresenter = new StatisticPresenter(statisticPage, _mainWindow, _mainWindow);
+            StatisticPresenter statisticPresenter = new StatisticPresenter(statisticPage, _mainWindow, _mainWindow);
             
             _mainWindow.RegisterPage("Home",homePage);
             _mainWindow.RegisterPage("Read",readPage);

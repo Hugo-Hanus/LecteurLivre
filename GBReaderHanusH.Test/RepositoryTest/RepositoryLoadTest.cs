@@ -14,7 +14,7 @@ public class RepositoryLoadTest
     [Test]
     public void GoodSituationTwoSession()
     {
-        IMapper mapperOne = new MapperOne();
+        ISessionMapper mapperOne = new SessionMapperOne();
         var history = new History();
         DateTime date = DateTime.ParseExact("2022-12-21 16:34:32", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
         DateTime dateT = DateTime.ParseExact("2022-12-21 15:14:12", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
@@ -32,7 +32,7 @@ public class RepositoryLoadTest
    public void NotGoodFormat()
     {
         
-        IMapper mapperOne = new MapperOne();
+        ISessionMapper mapperOne = new SessionMapperOne();
         var history = new History();
         const string path = @"..\..\..\resources\NotGoodFormat";
         IRepository repo = new JsonRepository(mapperOne, history, path);
@@ -50,7 +50,7 @@ public class RepositoryLoadTest
     public void NotGoodFormatDateTime()
     {
 
-        IMapper mapperOne = new MapperOne();
+        ISessionMapper mapperOne = new SessionMapperOne();
         var history = new History();
         const string path = @"..\..\..\resources\NotGoodFormatDateTime";
         IRepository repo = new JsonRepository(mapperOne, history, path);
@@ -69,7 +69,7 @@ public class RepositoryLoadTest
     public void FolderEmpty()
     {
         
-        IMapper mapperOne = new MapperOne();
+        ISessionMapper mapperOne = new SessionMapperOne();
         var history = new History();
         const string path = @"..\..\..\resources\Empty";
         IRepository repo = new JsonRepository(mapperOne, history, path);
@@ -87,7 +87,7 @@ public class RepositoryLoadTest
     public void FileEmpty()
     {
         
-        IMapper mapperOne = new MapperOne();
+        ISessionMapper mapperOne = new SessionMapperOne();
         var history = new History();
         const string path = @"..\..\..\resources\FileEmpty";
         IRepository repo = new JsonRepository(mapperOne, history, path);

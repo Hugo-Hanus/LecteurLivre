@@ -12,11 +12,18 @@ namespace GBReaderHanusH.Domains.Domains
         public History()
         {
             SessionList = new Dictionary<string, Session>();
+            PreviousPage = new Stack<int>();
         }
 
         public IDictionary<string, Session> SessionList
         {
             get; set;
+        }
+
+        public Stack<int> PreviousPage
+        {
+            get;
+            set;
         }
 
         public bool ContainsIsbn(string isbn)=> SessionList.ContainsKey(isbn);
@@ -45,5 +52,7 @@ namespace GBReaderHanusH.Domains.Domains
         }
 
         public void setHistory(History history) => SessionList = history.SessionList;
+
+        public void ClearPreviousPage() => PreviousPage.Clear();
     }
 }

@@ -3,7 +3,7 @@ using GBReaderHanusH.Infrastructure.DTO;
 
 namespace GBReaderHanusH.Infrastructure.Mapper;
 
-public interface IMapper
+public interface ISessionMapper
 {
     DtoHistory HistoryToDtoHistory(History history);
      History DtoHistoryToHistory(DtoHistory dtoHistory);

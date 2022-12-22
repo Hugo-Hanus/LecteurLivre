@@ -13,8 +13,6 @@ namespace GBReaderHanusH.Repository.Storage
         IList<int> LoadIdPageOfGameBook(string isbn);
         int LoadNumberPage(int idPage);
         IList<string> SelectResumeGameBookSearch(string search);
-        /* LoadPage(int idPage);
-         LoadGameBook(string isbn);
-         SelectResumeGameBookSearch(string search)*/
+         
     }
 }

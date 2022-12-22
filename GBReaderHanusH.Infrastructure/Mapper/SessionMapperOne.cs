@@ -4,7 +4,7 @@ using GBReaderHanusH.Repository.CustomException;
 
 namespace GBReaderHanusH.Infrastructure.Mapper;
 
-public class MapperOne : IMapper
+public class SessionMapperOne : ISessionMapper
 {
     public History DtoHistoryToHistory(DtoHistory dtoHistory)
     {

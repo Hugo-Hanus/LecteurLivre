@@ -10,7 +10,7 @@ namespace GBReaderHanusH.Avalonia.Controls
     public partial class ChoiceView : UserControl
     {
         public ChoiceView() => InitializeComponent();
-        public event EventHandler<ChoiceEventArgs> ChoiceMake;
+        public event EventHandler<ChoiceEventArgs>? ChoiceMake;
 
         public string ChoiceName
         {

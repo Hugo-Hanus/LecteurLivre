@@ -6,6 +6,7 @@ using GBReaderHanusH.Repository.Repository;
 using Presenter.Events;
 using Presenter.Notification;
 using System.Globalization;
+using System.IO.Pipes;
 using GBReaderHanusH.Repository.Storage;
 using Presenter.Dependencies;
 
@@ -29,6 +30,7 @@ namespace Presenter
             _readDependencies.NotificationChannels = readDependencies.NotificationChannels;
             _repository = CreateRepo();
             _storageFactory = CreateFactory();
+            
         }
 
         private void SubscribeToView()
@@ -40,7 +42,7 @@ namespace Presenter
         }
         private JsonRepository CreateRepo()
         {
-            IMapper mapper = new MapperOne();
+            ISessionMapper mapper = new SessionMapperOne();
             _history = new History();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             return new JsonRepository(mapper, _history, path);
@@ -52,17 +54,22 @@ namespace Presenter
         }
         private void ReadBook()
         {
+            
             LoadHistory();
             DateTime formatDateTime = DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             if (_history.ContainsIsbn(_gameBook.Isbn))
             {
+                _history.ClearPreviousPage();
                 SetPage(_history.GetPageOfIsbn(_gameBook.Isbn));
+                _history.PreviousPage.Push(_history.GetPageOfIsbn(_gameBook.Isbn));
                 _history.UpdateReadingSession(_gameBook.Isbn, _history.GetPageOfIsbn(_gameBook.Isbn), formatDateTime);
             }
             else
             {
                 _history.AddSession(_gameBook.Isbn, new Session(formatDateTime, formatDateTime, _gameBook.Title, _gameBook.GetFirstPage()));
+                _history.ClearPreviousPage();
                 SetPage(_gameBook.GetFirstPage());
+                _history.PreviousPage.Push(_gameBook.GetFirstPage());
             }
         }
 
@@ -76,17 +83,24 @@ namespace Presenter
                 IList<Choice> choices = _gameBook.Pages[i].Choices;
                 _readDependencies.View.PageText = _gameBook.Pages[i].Text;
                 _readDependencies.View.PageNumber = i;
-                if (choices.Count > 0)
+
+                if (_history.PreviousPage.Count>1)
                 {
+                    AddChoices(-1, "Précédente", false);
+                }
+
+                if (choices.Count > 0)
+                { 
                     foreach (var choice in choices)
                     {
-                        AddChoices(choice.GoTo, choice.Text, false);
+                            AddChoices(choice.GoTo, choice.Text, false);
                     }
                 }
                 else
                 {
-                    AddChoices(-1, "Recommencer la lecture", true);
+                        AddChoices(-1, "Recommencer la lecture", true);
                 }
+
                 _history.UpdateReadingSession(_gameBook.Isbn, i, DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture));
                 _readDependencies.NotificationChannels.Push(NotificationSeverity.Success, "Session", $"Session mise à jour");
             }
@@ -128,13 +142,20 @@ namespace Presenter
             if (int.TryParse(page, out int number))
             {
                 _readDependencies.View.ClearChoice();
+                _history.PreviousPage.Push(number);
                 SetPage(number);
                 _readDependencies.NotificationChannels.Push(NotificationSeverity.Info, "Choix choisit", $" Vers la page: N°{page}");
             }
-            else
+            else if (page=="P")
             {
                 _readDependencies.View.ClearChoice();
+                _history.PreviousPage.Pop();
+                SetPage(_history.PreviousPage.Peek());
+            }else {
+                _readDependencies.View.ClearChoice();
+                _history.ClearPreviousPage();
                 SetPage(_gameBook.GetFirstPage());
+                _history.PreviousPage.Push(_gameBook.GetFirstPage());
                 _history.ResetReadingSession(_gameBook.Isbn, DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture));
                 _readDependencies.NotificationChannels.Push(NotificationSeverity.Info, "Lecture", $"Vous avez choisit de recommencer la lecture");
             }
@@ -172,6 +193,7 @@ namespace Presenter
                 SetPage(_gameBook.GetFirstPage());
             }
             _repository.SaveHistory(_history);
+            _history.ClearPreviousPage();
             _readDependencies.View.ClearChoice();
         }
         public void Handle(ReadingBookEventArgs message)
@@ -202,7 +224,7 @@ namespace Presenter
                 listIdPage = storage.LoadIdPageOfGameBook(isbn);
                 foreach (var idpage in listIdPage)
                 {
-                    var numero = storage.LoadNumberPage(idpage);
+                    int numero = storage.LoadNumberPage(idpage);
                     var page = storage.LoadPage(idpage);
                     var choices = storage.LoadChoicesOfAPage(idpage);
                     page.Choices = choices;

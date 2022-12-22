@@ -13,7 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GBReaderHanusH.Domains\GBReaderHanusH.Domains.csproj" />
-      <ProjectReference Include="..\GBReaderHanusH.Infrastructure\GBReaderHanusH.Infrastructure.csproj" />
+		<ProjectReference Include="..\GBReaderHanusH.Infrastructure\GBReaderHanusH.Infrastructure.csproj" />
       <ProjectReference Include="..\GBReaderHanusH.Repository\GBReaderHanusH.Repository.csproj" />
     </ItemGroup>
 

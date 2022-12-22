@@ -27,7 +27,7 @@ namespace GBReaderHanusH.Test.RepositoryTest
                 }
 
             }
-            IMapper mapperOne = new MapperOne();
+            ISessionMapper mapperOne = new SessionMapperOne();
             var history = new History();
             string json = "{\"1-551-11\":{\"Begin\":\"2022-12-21T16:34:32\",\"LastUpdate\":\"2022-12-21T16:34:32\",\"Title\":\"Titre 1\",\"Page\":5},\"2-662-22\":{\"Begin\":\"2022-12-21T16:34:32\",\"LastUpdate\":\"2022-12-21T16:34:32\",\"Title\":\"Titre 2\",\"Page\":6}}\r\n";
             DateTime date = DateTime.ParseExact("2022-12-21 16:34:32", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
@@ -51,7 +51,7 @@ namespace GBReaderHanusH.Test.RepositoryTest
             {
                 File.Delete(pathComplete);
             }
-            IMapper mapperOne = new MapperOne();
+            ISessionMapper mapperOne = new SessionMapperOne();
             var history = new History();
             string json = "{\"1-551-11\":{\"Begin\":\"2022-12-21T16:34:32\",\"LastUpdate\":\"2022-12-21T16:34:32\",\"Title\":\"Titre 1\",\"Page\":5},\"2-662-22\":{\"Begin\":\"2022-12-21T16:34:32\",\"LastUpdate\":\"2022-12-21T16:34:32\",\"Title\":\"Titre 2\",\"Page\":6}}\r\n";
             DateTime date = DateTime.ParseExact("2022-12-21 16:34:32", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
