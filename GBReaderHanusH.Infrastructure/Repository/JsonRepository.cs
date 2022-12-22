@@ -56,7 +56,7 @@ public class JsonRepository : IRepository
                 throw new EmptyJsonFileException();
             }
             IDictionary<string, DtoSession>? listSession = JsonConvert.DeserializeObject<IDictionary<string, DtoSession>>(jsonString);
-            return new(listSession??new Dictionary<string,DtoSession>());
+            return new(listSession);
         }
         catch (JsonReaderException)
         {
