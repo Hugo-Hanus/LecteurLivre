@@ -35,10 +35,11 @@ namespace GBReaderHanusH.Domains.Domains
         {
             SessionList.Add(isbn, newSession);
         }
-        public void UpdateReadingSession(string isbn,int page, DateTime dateTime)
+        public void UpdateReadingSession(string isbn,int page,string title, DateTime dateTime)
         {
             SessionList[isbn].Page = page;
             SessionList[isbn].LastUpdate = dateTime;
+            SessionList[isbn].Title = title;
         }
 
         public void ResetReadingSession(string isbn, DateTime dateTime)
@@ -50,8 +51,7 @@ namespace GBReaderHanusH.Domains.Domains
         {
             SessionList.Remove(isbn);
         }
-
-        public void setHistory(History history) => SessionList = history.SessionList;
+        
 
         public void ClearPreviousPage() => PreviousPage.Clear();
     }
