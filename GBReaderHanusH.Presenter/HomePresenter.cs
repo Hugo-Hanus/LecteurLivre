@@ -143,12 +143,17 @@ namespace Presenter
         {
             try
             {
+                IList<string> research;
                 using var storage = _mySqlStorageFactory.NewStorage();
-                _listView = storage.SelectResumeGameBookSearch(search);
-                if (_listView.Count > 0)
+                research = storage.SelectResumeGameBookSearch(search);
+                if (research.Count > 0)
                 {
                     _dependencies.NotificationChannels.Push(NotificationSeverity.Success, "Recherche", $"résultat pour : \"{search}\"");
-                    _dependencies.View.Items = _listView;
+                    _dependencies.View.Items = research;
+                }
+                else
+                {
+                    _dependencies.NotificationChannels.Push(NotificationSeverity.Warning, "Recherche", $"Pas de résultat pour : \"{search}\"");
                 }
             }
             catch (MySqlException)

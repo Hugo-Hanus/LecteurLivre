@@ -163,7 +163,7 @@ namespace Presenter
         }
         private void GoToHome(object? sender,EventArgs e)
         {
-            _readDependencies.Router.GoTo("Home");
+            
             var numberPage = _readDependencies.View.PageNumber;
             if (_gameBook.Pages[numberPage].Choices.Count() == 0)
             {
@@ -171,6 +171,7 @@ namespace Presenter
                 _readDependencies.View.ClearChoice();
             }
             SaveWhenQuitting();
+            _readDependencies.Router.GoTo("Home");
         }
 
         private void SaveWhenQuitting()
