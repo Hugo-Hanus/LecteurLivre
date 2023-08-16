@@ -143,16 +143,18 @@ namespace Presenter
         {
             try
             {
-                IList<string> research;
+                IList<string> research ;
                 using var storage = _mySqlStorageFactory.NewStorage();
                 research = storage.SelectResumeGameBookSearch(search);
                 if (research.Count > 0)
                 {
                     _dependencies.NotificationChannels.Push(NotificationSeverity.Success, "Recherche", $"résultat pour : \"{search}\"");
                     _dependencies.View.Items = research;
+                    _listView = research;
                 }
                 else
                 {
+                    _dependencies.View.Items = research;
                     _dependencies.NotificationChannels.Push(NotificationSeverity.Warning, "Recherche", $"Pas de résultat pour : \"{search}\"");
                 }
             }
