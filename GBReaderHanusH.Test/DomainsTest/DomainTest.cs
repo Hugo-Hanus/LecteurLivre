@@ -128,6 +128,8 @@ namespace GBReaderHanusH.Test.DomainsTest
                 { isbnOne, session },
                 {isbnTwo,sessionTwo}
             };
+            history.SessionList = dico;
+            history.PreviousPage = previous;
             Assert.Multiple(() =>
             {
                 Assert.That(history.SessionList, Is.EqualTo(dico));
