@@ -105,9 +105,7 @@ public class JsonRepository : IRepository
              
             }
             if (!File.Exists(Path + @"\ue36\190533-session.json"))
-            {
-            using FileStream fs = File.Create(Path + @"\ue36\190533-session.json");
-        }
+            { using FileStream fs = File.Create(Path + @"\ue36\190533-session.json"); }
     }
 
 }

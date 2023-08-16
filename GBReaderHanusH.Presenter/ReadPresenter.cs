@@ -62,7 +62,7 @@ namespace Presenter
                 _history.ClearPreviousPage();
                 SetPage(_history.GetPageOfIsbn(_gameBook.Isbn));
                 _history.PreviousPage.Push(_history.GetPageOfIsbn(_gameBook.Isbn));
-                _history.UpdateReadingSession(_gameBook.Isbn, _history.GetPageOfIsbn(_gameBook.Isbn), formatDateTime);
+                _history.UpdateReadingSession(_gameBook.Isbn, _history.GetPageOfIsbn(_gameBook.Isbn),_gameBook.Title, formatDateTime);
             }
             else
             {
@@ -101,7 +101,7 @@ namespace Presenter
                         AddChoices(-1, "Recommencer la lecture", true);
                 }
 
-                _history.UpdateReadingSession(_gameBook.Isbn, i, DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture));
+                _history.UpdateReadingSession(_gameBook.Isbn, i,_gameBook.Title,DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture));
                 _readDependencies.NotificationChannels.Push(NotificationSeverity.Success, "Session", $"Session mise à jour");
             }
             else

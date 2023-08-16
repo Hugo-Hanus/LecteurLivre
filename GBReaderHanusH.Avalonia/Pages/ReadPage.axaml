@@ -8,7 +8,7 @@
         <WrapPanel>
             <Button HorizontalContentAlignment="Left" x:Name="Home" Click="Home_OnClick" CornerRadius="10" HorizontalAlignment="Left" Background="#B0F2B4" >Accueil</Button>    
             <Border HorizontalAlignment="Center" BorderThickness="2" BorderBrush="White"  Padding="5" Margin="5" CornerRadius="10" Background="#985F99">
-            <WrapPanel>
+            <WrapPanel MinWidth="600" >
                 <TextBlock Foreground="White" Padding="5" >ISBN : </TextBlock>
                 <TextBlock x:Name="IsbnText" Foreground="White" Padding="5">0-000000-00-0</TextBlock>
                 <TextBlock Foreground="White" Padding="5">| Titre : </TextBlock>

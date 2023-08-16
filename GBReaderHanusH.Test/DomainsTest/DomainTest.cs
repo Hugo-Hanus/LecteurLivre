@@ -111,34 +111,49 @@ namespace GBReaderHanusH.Test.DomainsTest
         [Test]
         public void HistoryTest()
         {
-            DateTime date = DateTime.Now;
-            Session session = new Session(date, date, "title", 1);
+            string isbnOne = "2-190533-04-X";
+            string isbnTwo = "2-190533-08-2";
+            string isbnThree = "2-190533-06-6";
+            DateTime dateOne = new DateTime(2000, 9, 2, 12, 25,23);
+            DateTime dateTwo = new DateTime(2001, 9, 4, 11, 15,32);
+            Session session = new Session(dateOne, dateOne, "title", 1);
+            Session sessionTwo = new Session(dateOne, dateTwo, "title", 1);
+            Stack<int> previous = new Stack<int>();
+            previous.Push(1);
+            previous.Push(2);
+            previous.Push(4);
             History history = new();
             IDictionary<string, Session> dico = new Dictionary<string, Session>
             {
-                { "11-55-66", session },
-                { "121-511-65646", session }
+                { isbnOne, session },
+                {isbnTwo,sessionTwo}
             };
-            history.SessionList = dico;
-
             Assert.Multiple(() =>
             {
                 Assert.That(history.SessionList, Is.EqualTo(dico));
-                Assert.That(history.ContainsIsbn("11-55-66"), Is.EqualTo(true));
-                Assert.That(history.ContainsIsbn("11-55-6"), Is.EqualTo(false));
-                Assert.That(history.GetPageOfIsbn("11-55-66"), Is.EqualTo(1));
+                Assert.That(history.ContainsIsbn(isbnOne), Is.EqualTo(true));
+                Assert.That(history.ContainsIsbn(isbnThree), Is.EqualTo(false));
+                Assert.That(history.GetPageOfIsbn(isbnOne), Is.EqualTo(1));
             });
-            history.AddSession("11-55-99", session);
+            history.AddSession(isbnThree, sessionTwo);
             Assert.That(history.SessionList.Count(), Is.EqualTo(3));
-            history.DeleteReadingSession("11-55-99");
+            history.DeleteReadingSession(isbnOne);
             Assert.That(history.SessionList.Count(), Is.EqualTo(2));
-            date = DateTime.Now;
-            history.UpdateReadingSession("11-55-66", 2, date);
+            history.UpdateReadingSession(isbnTwo, 2,"title", dateOne);
             Assert.Multiple(() =>
             {
-                Assert.That(history.SessionList["11-55-66"].Page, Is.EqualTo(2));
-                Assert.That(history.SessionList["11-55-66"].LastUpdate, Is.EqualTo(date));
+                Assert.That(history.SessionList[isbnTwo].Page, Is.EqualTo(2));
+                Assert.That(history.SessionList[isbnTwo].LastUpdate, Is.EqualTo(dateOne));
             });
+            
+            history.ResetReadingSession(isbnTwo,dateOne);
+            Assert.Multiple((() =>
+            {
+                Assert.That(history.SessionList[isbnTwo].LastUpdate,Is.EqualTo(dateOne));
+                Assert.That(history.SessionList[isbnTwo].Begin,Is.EqualTo(dateOne));
+            }));
+            history.ClearPreviousPage();
+            Assert.That(history.PreviousPage.Count,Is.EqualTo(0));
         }
     }
 }
