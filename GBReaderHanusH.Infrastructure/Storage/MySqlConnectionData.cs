@@ -9,11 +9,11 @@ namespace GBReaderHanusH.Repository.Storage
 {
     public class MySqlConnectionData : ConnectionData
     {
-        public string getDataBase() => "in19b1143";
-        public string getPassword() => "5559";
+        public string getDataBase() => "database";
+        public string getPassword() => "password";
         public string getProvider() => "MySql.Data.MySqlClient";
-        public string getServer() => "192.168.128.13";
-        public string getUserName() => "in19b1143";
+        public string getServer() => "ipServer";
+        public string getUserName() => "UserName";
         public DbProviderFactory getProviderFactory() => MySql.Data.MySqlClient.MySqlClientFactory.Instance;
     }
 }

@@ -9,7 +9,7 @@ namespace GBReaderHanusH.Repository.Storage
 {
     public interface ILibraryStorage
     {
-      IList<string> SelectResumeGameBookPublish();
+        IList<string> SelectResumeGameBookPublish();
         IList<int> LoadIdPageOfGameBook(string isbn);
         int LoadNumberPage(int idPage);
         IList<string> SelectResumeGameBookSearch(string search);
